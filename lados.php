@@ -23,10 +23,10 @@ if (isset($_POST['forma'])) {
 if ($_SESSION['forma'] === "Triangulo") {
     // Formulario para un triángulo
     echo '<form action="resultado.php" method="post">
-            <label for="lado1">Lado 1:</label>
-            <input type="number" name="lado1"><br><br>
-            <label for="lado2">Lado 2:</label>
-            <input type="number" name="lado2"><br><br>
+            <label for="lado1">Base: </label>
+            <input type="number" name="Base"><br><br>
+            <label for="lado2">Altura: </label>
+            <input type="number" name="Altura"><br><br>
             <input type="submit" name="calcular" value="Calcular" class="btn btn-primary">
           </form>';
 
