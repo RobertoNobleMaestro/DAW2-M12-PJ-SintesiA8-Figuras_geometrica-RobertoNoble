@@ -1,3 +1,8 @@
+<?php
+session_abort();
+session_start();
+
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +15,7 @@
         <label for="producto" class="form-label">Selecciona el tipo de forma</label>
             <select class="form-select" id="forma" name="forma" required>
                 <option selected disabled>Elige una forma</option>
-                <option value="Redonda">Redonda</option>
+                <option value="Esfera">Esfera</option>
                 <option value="Triangulo">Triangulo</option>
                 <option value="Cuadrado">Cuadrado</option>
                 <option value="Rectangulo">Rectangulo</option>
