@@ -1,14 +1,13 @@
 <?php
 session_abort();
 session_start();
-
 ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Pagina principal</title>
 </head>
 <body>
     <form action="lados.php" method="post">
@@ -20,6 +19,7 @@ session_start();
                 <option value="Cuadrado">Cuadrado</option>
                 <option value="Rectangulo">Rectangulo</option>
             </select>
+            <br>
         <input class="btn btn-primary" type="submit" value="Enviar">
     </form>
 </body>
