@@ -2,6 +2,7 @@ html{
     display: flex;
     justify-content: space-around;
     align-items: center;
+
 }
 body{
     width: 40%;
