@@ -10,7 +10,11 @@ session_start();
     <title>Pagina principal</title>
 </head>
 <body>
-    <form action="lados.php" method="post">
+    <form action="lados.php" method="post" class="form-index">
+        <div class="align-center">
+            <h1>Geometria</h1>
+        </div>
+        <br>
         <label for="producto" class="form-label">Selecciona el tipo de forma</label>
             <select class="form-select" id="forma" name="forma" required>
                 <option selected disabled>Elige una forma</option>
@@ -20,7 +24,10 @@ session_start();
                 <option value="Rectangulo">Rectangulo</option>
             </select>
             <br>
-        <input class="btn btn-primary" type="submit" value="Enviar">
+            <br>    
+            <div class="align-center">
+                <input class="boton" type="submit" value="Enviar">
+            </div>
     </form>
 </body>
 </html>
