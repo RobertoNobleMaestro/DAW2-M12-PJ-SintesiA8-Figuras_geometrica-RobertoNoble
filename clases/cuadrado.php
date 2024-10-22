@@ -4,7 +4,6 @@ class Cuadrado extends FiguraGeometrica {
         parent::__construct($tipoFigura, $lado1); // Cambiar lado1 como la base
     }
     public function __destruct() {
-        echo "Destruyendo el objeto rectangulo";
     }
     public function calcularArea() {
         return $this->getLado1() * $this->getLado1();

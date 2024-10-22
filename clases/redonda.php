@@ -7,7 +7,6 @@ class Redonda extends FiguraGeometrica {
 
     // Destructor
     public function __destruct() {
-        echo "Destruyendo el objeto redonda";
     }
 
     // Método para calcular el área (base * altura / 2)

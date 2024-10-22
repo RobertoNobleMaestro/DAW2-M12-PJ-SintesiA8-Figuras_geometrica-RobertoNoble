@@ -12,7 +12,6 @@ class Triangulo extends FiguraGeometrica {
 
     // Destructor
     public function __destruct() {
-        echo "Destruyendo el objeto Triángulo";
     }
 
     // Getters y Setters
