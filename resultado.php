@@ -24,7 +24,7 @@ if (isset($_POST['calcular'])) {
                 require_once('clases/forma.php');
                 require_once('clases/triangulo.php');
                 $triangulo = new Triangulo($_SESSION['forma'], $base, $altura);
-                echo '<div class="tabla"><table class="table table-striped">
+                echo '<div class="tabla"><h1>Triángulo isoceles</h1><br><table class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col"></th>
@@ -45,7 +45,12 @@ if (isset($_POST['calcular'])) {
                     <td>' . $triangulo->calcularPerimetro() . '</td>
                     </tr>
                 </tbody>
-                </table></div>';
+                </table>
+                <br>
+                <form action="index.php" method="post">
+                    <input type="submit" name="calcular" value="Volver" class="boton">
+                </form>
+                </div>';
             } else {
                 header('Location: index.php?error=datos_faltantes_triangulo');
                 exit;
@@ -57,7 +62,7 @@ if (isset($_POST['calcular'])) {
                 require_once('clases/forma.php');
                 require_once('clases/redonda.php');
                 $redonda = new Redonda($_SESSION['forma'], $radio);
-                echo '<div class="tabla"><table class="table table-striped">
+                echo '<div class="tabla"><h1>Esfera</h1><br><table class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col"></th>
@@ -76,7 +81,12 @@ if (isset($_POST['calcular'])) {
                     <td>' . $redonda->calcularPerimetro() . '</td>
                     </tr>
                 </tbody>
-                </table></div>';
+                </table>
+                <br>
+                <form action="index.php" method="post">
+                    <input type="submit" name="calcular" value="Volver" class="boton">
+                </form>
+                </div>';
             } else {
                 header('Location: index.php?error=radio_faltante_esfera');
                 exit;
@@ -89,7 +99,7 @@ if (isset($_POST['calcular'])) {
                 require_once('clases/forma.php');
                 require_once('clases/rectangulo.php');
                 $rectangulo= new Rectangulo($_SESSION['forma'], $lado1, $lado2);
-                echo '<div class="tabla"><table class="table table-striped">
+                echo  '<div class="tabla"><h1>Rectángulo</h1><br><table class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col"></th>
@@ -110,7 +120,12 @@ if (isset($_POST['calcular'])) {
                     <td>' . $rectangulo->calcularPerimetro() . '</td>
                     </tr>
                 </tbody>
-                </table></div>';
+                </table>
+                <br>
+                <form action="index.php" method="post">
+                    <input type="submit" name="calcular" value="Volver" class="boton">
+                </form>
+                </div>';
             } else {
                 header('Location: index.php?error=lados_faltantes_rectangulo');
                 exit;
@@ -122,7 +137,7 @@ if (isset($_POST['calcular'])) {
                 require_once('clases/forma.php');
                 require_once('clases/cuadrado.php');
                 $cuadrado= new Cuadrado($_SESSION['forma'], $lado1);
-                echo '<div class="tabla"><table class="table table-striped">
+                echo '<div class="tabla"><h1>Cuadrado</h1><br><table class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col">Forma</th>
@@ -139,7 +154,12 @@ if (isset($_POST['calcular'])) {
                     <td>' . $cuadrado->calcularPerimetro() . '</td>
                     </tr>
                 </tbody>
-                </table></div>';
+                </table>
+                <br>
+                <form action="index.php" method="post">
+                    <input type="submit" name="calcular" value="Volver" class="boton">
+                </form>
+                 </div>';
             } else {
                 header('Location: index.php?error=lado_faltante_cuadrado');
                 exit;
