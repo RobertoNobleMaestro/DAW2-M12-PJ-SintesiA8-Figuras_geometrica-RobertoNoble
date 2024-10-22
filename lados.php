@@ -14,7 +14,6 @@
 <body>
 <?php
 session_start();
-// Comprobar si se ha enviado y guardado correctamente la forma
 if (isset($_POST['forma'])) {
     $_SESSION['forma'] = htmlspecialchars($_POST['forma']);
 } else {
@@ -23,9 +22,7 @@ if (isset($_POST['forma'])) {
     exit();
 }
 
-// Formulario y cálculo según la forma seleccionada
 if ($_SESSION['forma'] === "Triangulo") {
-    // Formulario para un triángulo
     echo '<form action="resultado.php" method="post" class="form-index" onsubmit="return triangulo()">
     <h1>' . $_SESSION["forma"] . '</h1>
     <label for="lado1" class="form-label">Base: </label>

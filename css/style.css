@@ -31,6 +31,11 @@ body{
 .align-center{
     text-align: center;
 }
+.div-botones{
+    display: flex;
+    width:75%;
+    justify-content: space-between;
+}
 .boton {
     background-color: black;
     color: white;
