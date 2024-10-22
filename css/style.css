@@ -31,6 +31,11 @@ body{
 .align-center{
     text-align: center;
 }
+.div-botones{
+    display: flex;
+    width:75%;
+    justify-content: space-between;
+}
 .boton {
     background-color: black;
     color: white;
@@ -53,4 +58,18 @@ body{
 }
 table{
     text-align: center !important;
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 10px !important;
+}
+.tabla{
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgb(223, 223, 223);
+    height: 50vh;
+    align-items: center;
+    padding: 50px;
 }
