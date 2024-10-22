@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,23 +16,23 @@
 </style>
 <body>
 <?php
-session_start();
 if (isset($_POST['forma'])) {
     $_SESSION['forma'] = htmlspecialchars($_POST['forma']);
 } else {
-    session_abort();
+    session_destroy();
+    session_unset();
     header('Location: index.php?error=noenviado');
     exit();
 }
 
 if ($_SESSION['forma'] === "Triangulo") {
-    echo '<form action="resultado.php" method="post" class="form-index" onsubmit="return triangulo()">
+echo '<form action="resultado.php" method="post" class="form-index" onsubmit="return triangulo()">
     <h1>' . $_SESSION["forma"] . '</h1>
     <label for="lado1" class="form-label">Base: </label>
-    <input type="text" name="lado1" id="lado1" class="form-control" onblur="triangulo()" onchange="triangulo()"><br>
+    <input type="text" name="lado1" id="lado1" class="form-control" value="' . (isset($_SESSION['base']) ? $_SESSION['base'] : '') . '" onblur="triangulo()" onchange="triangulo()"><br>
     <p id="errorBase" style="color: red;"></p> 
     <label for="lado2" class="form-label">Altura: </label>
-    <input type="text" name="lado2" id="lado2" class="form-control" onblur="triangulo()" onchange="triangulo()"><br>
+    <input type="text" name="lado2" id="lado2" class="form-control" value="' . (isset($_SESSION['altura']) ? $_SESSION['altura'] : '') . '" onblur="triangulo()" onchange="triangulo()"><br>
     <p id="errorAltura" style="color: red;"></p> 
     <br>
     <input type="submit" name="calcular" value="Calcular" class="boton">
@@ -39,7 +42,7 @@ if ($_SESSION['forma'] === "Triangulo") {
     echo '<form action="resultado.php" method="post" class="form-index" onsubmit="return redonda()">
         <h1>Esfera</h1>
         <label for="radio" class="form-label">Radio de la esfera:</label>
-        <input type="text" name="radio" id="radio" class="form-control" onblur="redonda()" onchange="redonda()"><br>
+        <input type="text" name="radio" id="radio" class="form-control" value="' . (isset($_SESSION['radio']) ? $_SESSION['radio'] : '') . '" onblur="redonda()" onchange="redonda()"><br>
         <p id="error" style="color: red;"></p>
         <br>
         <input type="submit" name="calcular" value="Calcular" class="boton">
@@ -50,11 +53,11 @@ if ($_SESSION['forma'] === "Triangulo") {
     echo '<form action="resultado.php" method="post" class="form-index" onsubmit="return rectangulo()">
         <h1>' . $_SESSION["forma"] . '</h1>
         <label for="lado1" class="form-label">Lado 1:</label>
-        <input type="text" name="lado1" id="lado1" class="form-control" onblur="rectangulo()" onchange="rectangulo()"><br>
+        <input type="text" name="lado1" id="lado1" class="form-control" value="' . (isset($_SESSION['lado1']) ? $_SESSION['lado1'] : '') . '" onblur="rectangulo()" onchange="rectangulo()"><br>
         <p id="error1" style="color: red;"></p> 
         <br>
         <label for="lado2" class="form-label">Lado 2:</label>
-        <input type="text" name="lado2" id="lado2" class="form-control"  onblur="rectangulo()" onchange="rectangulo()"><br>
+        <input type="text" name="lado2" id="lado2" class="form-control"  value="' . (isset($_SESSION['lado2']) ? $_SESSION['lado2'] : '') . '" onblur="rectangulo()" onchange="rectangulo()"><br>
         <p id="error2" style="color: red;"></p> 
         <br>
         <input type="submit" name="calcular" value="Calcular" class="boton">
@@ -64,13 +67,15 @@ if ($_SESSION['forma'] === "Triangulo") {
     echo '<form action="resultado.php" method="post" class="form-index" onsubmit="return  cuadrado()">
         <h1>' . $_SESSION["forma"] . '</h1>
         <label for="lado1" class="form-label">Lado 1:</label>
-        <input type="text" name="lado1" id="lado1" class="form-control" onblur="cuadrado()" onchange="cuadrado()"><br>
+        <input type="text" name="lado1" id="lado1" class="form-control" value="' . (isset($_SESSION['lado1']) ? $_SESSION['lado1'] : '') . '" onblur="cuadrado()" onchange="cuadrado()"><br>
         <p id="error" style="color: red;"></p>
         <br>
         <input type="submit" name="calcular" value="Calcular" class="boton">
         </form>';
 } else {
-    session_abort();
+
+    session_destroy();
+    session_unset();
     header('Location: index.php?error=formaerronea');
 }
 ?>

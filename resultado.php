@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +13,9 @@
 </body>
 </html>
 <?php
-session_start();
 if (!isset($_SESSION['forma'])) {
+    session_destroy();
+    session_unset();
     header('Location: index.php?error=noenviado');
     exit;
 }
@@ -21,6 +25,8 @@ if (isset($_POST['calcular'])) {
             if (!empty($_POST['lado1']) && !empty($_POST['lado2'])) {
                 $base = htmlspecialchars($_POST['lado1']);
                 $altura = htmlspecialchars($_POST['lado2']);
+                $_SESSION['altura'] = $altura;
+                $_SESSION['base'] = $base;
                 require_once('clases/forma.php');
                 require_once('clases/triangulo.php');
                 $triangulo = new Triangulo($_SESSION['forma'], $base, $altura);
@@ -47,11 +53,21 @@ if (isset($_POST['calcular'])) {
                 </tbody>
                 </table>
                 <br>
-                <form action="index.php" method="post">
-                    <input type="submit" name="calcular" value="Volver" class="boton">
-                </form>
+                <div class="div-botones">
+                    <form action="index.php" method="post">
+                        <input type="submit" name="Volver" value="Volver" class="boton">
+                    </form>
+                    <form action="lados.php" method="post">
+                        <input type="hidden" name="forma" value="'.$_SESSION["forma"].'">   
+                        <input type="hidden" name="base" value="'.$_SESSION["base"].'"> 
+                        <input type="hidden" name="altura" value="'.$_SESSION["altura"].'">         
+                        <input type="submit" name="Modificar" value="Modificar" class="boton">
+                    </form>
+                </div>
                 </div>';
             } else {
+                session_unset();
+                session_destroy();
                 header('Location: index.php?error=datos_faltantes_triangulo');
                 exit;
             }
@@ -59,6 +75,7 @@ if (isset($_POST['calcular'])) {
         case "Esfera":
             if (isset($_POST['radio'])) {
                 $radio = htmlspecialchars($_POST['radio']);
+                $_SESSION['radio'] = $radio;
                 require_once('clases/forma.php');
                 require_once('clases/redonda.php');
                 $redonda = new Redonda($_SESSION['forma'], $radio);
@@ -83,11 +100,20 @@ if (isset($_POST['calcular'])) {
                 </tbody>
                 </table>
                 <br>
-                <form action="index.php" method="post">
-                    <input type="submit" name="calcular" value="Volver" class="boton">
-                </form>
+                <div class="div-botones">
+                    <form action="index.php" method="post">
+                        <input type="submit" name="Volver" value="Volver" class="boton">
+                    </form>
+                    <form action="lados.php" method="post">
+                        <input type="hidden" name="radio" value="'.$_SESSION["radio"].'"> 
+                        <input type="hidden" name="forma" value="'.$_SESSION["forma"].'">   
+                        <input type="submit" name="Modificar" value="Modificar" class="boton">
+                    </form>
+                </div>
                 </div>';
             } else {
+                session_unset();
+                session_destroy();
                 header('Location: index.php?error=radio_faltante_esfera');
                 exit;
             }
@@ -96,6 +122,8 @@ if (isset($_POST['calcular'])) {
             if (isset($_POST['lado1']) && isset($_POST['lado2'])) {
                 $lado1 = htmlspecialchars($_POST['lado1']);
                 $lado2 = htmlspecialchars($_POST['lado2']);
+                $_SESSION['lado1'] = $lado1;
+                $_SESSION['lado2'] = $lado2;
                 require_once('clases/forma.php');
                 require_once('clases/rectangulo.php');
                 $rectangulo= new Rectangulo($_SESSION['forma'], $lado1, $lado2);
@@ -122,11 +150,21 @@ if (isset($_POST['calcular'])) {
                 </tbody>
                 </table>
                 <br>
-                <form action="index.php" method="post">
-                    <input type="submit" name="calcular" value="Volver" class="boton">
-                </form>
+                <div class="div-botones">
+                    <form action="index.php" method="post">
+                        <input type="submit" name="Volver" value="Volver" class="boton">
+                    </form>
+                    <form action="lados.php" method="post">
+                        <input type="hidden" name="forma" value="'.$_SESSION["forma"].'">   
+                        <input type="hidden" name="lado1" value="'.$_SESSION["lado1"].'"> 
+                        <input type="hidden" name="lado2" value="'.$_SESSION["lado2"].'">         
+                        <input type="submit" name="Modificar" value="Modificar" class="boton">
+                    </form>
+                </div>
                 </div>';
             } else {
+                session_unset();
+                session_destroy();
                 header('Location: index.php?error=lados_faltantes_rectangulo');
                 exit;
             }
@@ -134,6 +172,7 @@ if (isset($_POST['calcular'])) {
         case "Cuadrado":
             if (isset($_POST['lado1'])) {
                 $lado1 = htmlspecialchars($_POST['lado1']);
+                $_SESSION['lado1'] = $lado1;
                 require_once('clases/forma.php');
                 require_once('clases/cuadrado.php');
                 $cuadrado= new Cuadrado($_SESSION['forma'], $lado1);
@@ -156,20 +195,33 @@ if (isset($_POST['calcular'])) {
                 </tbody>
                 </table>
                 <br>
-                <form action="index.php" method="post">
-                    <input type="submit" name="calcular" value="Volver" class="boton">
-                </form>
+                <div class="div-botones">
+                    <form action="index.php" method="post">
+                        <input type="submit" name="Volver" value="Volver" class="boton">
+                    </form>
+                    <form action="lados.php" method="post">
+                        <input type="hidden" name="forma" value="'.$_SESSION["forma"].'">   
+                        <input type="hidden" name="lado1" value="'.$_SESSION["lado1"].'"> 
+                        <input type="submit" name="Modificar" value="Modificar" class="boton">
+                    </form>
+                </div>
                  </div>';
             } else {
+                session_unset();
+                session_destroy();
                 header('Location: index.php?error=lado_faltante_cuadrado');
                 exit;
             }
             break;
         default:
+        session_unset();
+        session_destroy();
             header('Location: index.php?error=forma_no_valida');
             exit;
     }
 } else {
+    session_unset();
+    session_destroy();
     header('Location: index.php?error=formulario_no_enviado');
     exit;
 }
