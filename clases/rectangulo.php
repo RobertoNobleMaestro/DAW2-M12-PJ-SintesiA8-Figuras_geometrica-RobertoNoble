@@ -6,7 +6,7 @@ class Rectangulo extends FiguraGeometrica {
         $this->lado2 = $lado2; 
     }
     public function __destruct() {
-        echo "Destruyendo el objeto rectangulo";
+        
     }
     public function getLado2() {
         return $this->lado2;
