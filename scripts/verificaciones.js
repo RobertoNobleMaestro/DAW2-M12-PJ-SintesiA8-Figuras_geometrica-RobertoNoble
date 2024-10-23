@@ -3,7 +3,6 @@ function index() {
     let error = document.getElementById('error');
     let selectClase = document.getElementById('forma'); 
     error.innerHTML = "";
-
     if (select === "") {
         error.innerHTML = "Selecciona una figura"; 
         selectClase.classList.add('invalido-select');
@@ -14,7 +13,6 @@ function index() {
         return true; 
     }
 }
-
 function redonda() {
     let radio = document.getElementById('radio').value;
     let error = document.getElementById('error');
